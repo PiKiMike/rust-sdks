@@ -421,6 +421,7 @@ impl LocalParticipant {
             disable_red,
             encryption: proto::encryption::Type::from(self.local.encryption_type) as i32,
             stream: options.stream.clone(),
+            stereo: options.stereo && matches!(track, LocalTrack::Audio(_)),
             ..Default::default()
         };
 

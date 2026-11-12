@@ -142,6 +142,9 @@ pub struct TrackPublishOptions {
     pub source: TrackSource,
     pub stream: String,
     pub preconnect_buffer: bool,
+    /// Announce an audio track as stereo, so the server negotiates two-channel Opus
+    /// for the publisher and every subscriber (like `forceStereo` in the JS SDK).
+    pub stereo: bool,
     pub frame_metadata_features: FrameMetadataFeatures,
     /// Preferred encoder backend for video tracks published with these options.
     ///
@@ -179,6 +182,7 @@ impl Default for TrackPublishOptions {
             source: TrackSource::Unknown,
             stream: "".to_string(),
             preconnect_buffer: false,
+            stereo: false,
             frame_metadata_features: FrameMetadataFeatures::default(),
             video_encoder: VideoEncoderBackend::Auto,
             scalability_mode: None,
